@@ -38,13 +38,6 @@ int s = 1;          // This will be the number of hashes to be printed for the c
     s++;                            // Increment s once per row.  s is deducted from n in the inner loops to determine when to print " " or "#"
     }//END OF OUTER LOOP
 
-printf("\n");
+//printf("\n");
 
 }//END OF PROGRAM
-
-
-
-/*
-PSEUDOCODE
-
-*/
