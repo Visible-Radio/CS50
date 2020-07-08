@@ -29,8 +29,8 @@ int s = 1;          // This will be the number of hashes to be printed for the c
         for (int k=n; k>0; k--){    //SECOND Inner loop responsible for printing contents of second half of individual rows
             if (k > (n-s)){
                 printf("#");
-            }else{
-                printf(" ");
+           // }else{
+           //     printf(" ");
             }
         }//END OF SECOND INNER LOOP
 
