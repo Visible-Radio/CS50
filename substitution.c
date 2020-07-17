@@ -27,13 +27,14 @@ int main(int argC, string argV[]){
     int plainTextLength = 0;
     int argVLength = 0;
     int checkSum = 0;
+    int keyBin[] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1}; // the 1 at keyBin[26] tracks if all alphabet chars are present
 
     for (int i = 0; argV[1][i] != '\0'; i++){                       //validate that the user provided key is 26 chars
         argVLength += 1;
     }
 
     if (argVLength != 26){
-        printf("Key must contain 26 unique alphabetic characters.\n");
+        printf("Key must contain TWENTY SIX unique alphabetic characters.\n");
         exit(1);
     }
 
@@ -43,19 +44,19 @@ int main(int argC, string argV[]){
         }else if (argV[1][i] >= 65 && argV[1][i] <=90){             //check if current character is upper case
             key[i] = argV[1][i];                                    //store in array key[]
         }else{                                                      //If the key has incorrect characters, ie non lower or upper case alphabetic characters
-            printf("Key must contain 26 unique alphabetic characters.\n");
+            printf("Key must contain 26 unique ALPHABETIC characters.\n");
             exit(1);
         }
             checkSum += key[i];                                     //Calculate the sum of the ascii values from 65-90.  It should == 2015, otherwise duplicates exist
         }//end of loop
 
-     printf("checkSum: %i\n", checkSum);
-     if (checkSum != 2015){
-        printf("Key must contain 26 unique alphabetic characters.\n");
-        exit(1);
-    }
+     //printf("checkSum: %i\n", checkSum);
+    // if (checkSum != 2015){
+    //    printf("Key must contain 26 UNIQUE alphabetic characters.\n");
+    //    exit(1);
+    //}
 
-    plainText = get_string("plaintext: ");
+
 
    //printf("argVLength: %i \n", argVLength);
 
@@ -63,10 +64,25 @@ int main(int argC, string argV[]){
         alphabetLength += 1;
     }
 
-     for (int i = 0 ; plainText[i] != '\0'; i++ ){      //determine length of the user's input
-        plainTextLength += 1;
+    for (int i = 0; i < alphabetLength; i++){
+        for (int j = 0; j < 26; j ++){
+            if (alphabet[i] == key[j]){
+                keyBin[i] = 1;                          //check that each char from alphabet is present and store a 1 in KeyBin[i] to record it
+            }
+        }
+        keyBin[26] *= keyBin[i];
+            if (keyBin[26] == 0){
+              printf("Key must not contain duplicate characters.\n");
+              exit(1);
+            }
     }
 
+
+    plainText = get_string("plaintext: ");
+
+     for (int i = 0 ; plainText[i] != '\0'; i++ ){      //determine length of the user's plainText
+        plainTextLength += 1;
+    }
 
 
     //printf("alphabet length = %i \n", alphabetLength);
