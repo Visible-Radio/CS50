@@ -39,15 +39,15 @@ int main(int argC, string argV[]){
     }
 
     for (int i = 0; argV[1][i] != '\0'; i++){
-        if (argV[1][i] >= 97 && argV[1][i] <=122){                  //check if current character is lower case
-            key[i] = argV[1][i] -32;                                //convert to upper case and store in array key[]
-        }else if (argV[1][i] >= 65 && argV[1][i] <=90){             //check if current character is upper case
-            key[i] = argV[1][i];                                    //store in array key[]
-        }else{                                                      //If the key has incorrect characters, ie non lower or upper case alphabetic characters
+        if (argV[1][i] >= 97 && argV[1][i] <=122){                          //check if current character is lower case
+            key[i] = argV[1][i] -32;                                        //convert to upper case and store in array key[]
+        }else if (argV[1][i] >= 65 && argV[1][i] <=90){                     //check if current character is upper case
+            key[i] = argV[1][i];                                            //store in array key[]
+        }else{                                                              //If the key has incorrect characters, ie non lower or upper case alphabetic characters
             printf("Key must contain 26 unique ALPHABETIC characters.\n");
             exit(1);
         }
-            checkSum += key[i];                                     //Calculate the sum of the ascii values from 65-90.  It should == 2015, otherwise duplicates exist
+            checkSum += key[i];                                             //Calculate the sum of the ascii values from 65-90.  It should == 2015, otherwise duplicates exist
         }//end of loop
 
      //printf("checkSum: %i\n", checkSum);
