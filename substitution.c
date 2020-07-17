@@ -15,6 +15,10 @@ int main(int argC, string argV[]){
 
     //printf("argC: %i  argV: %s \n", argC, argV[1]);
 
+    if (argC < 2){
+        printf("You must enter a 26 character key at the command line.\n");
+        exit(1);
+    }
 
     char alphabet[] = {"ABCDEFGHIJKLMNOPQRSTUVWXYZ"};
     string plainText;
@@ -22,13 +26,14 @@ int main(int argC, string argV[]){
     int alphabetLength = 0;
     int plainTextLength = 0;
     int argVLength = 0;
+    int checkSum = 0;
 
     for (int i = 0; argV[1][i] != '\0'; i++){                       //validate that the user provided key is 26 chars
         argVLength += 1;
     }
 
     if (argVLength != 26){
-        printf("Key must contain 26 alphabetic characters.\n");
+        printf("Key must contain 26 unique alphabetic characters.\n");
         exit(1);
     }
 
@@ -38,10 +43,17 @@ int main(int argC, string argV[]){
         }else if (argV[1][i] >= 65 && argV[1][i] <=90){             //check if current character is upper case
             key[i] = argV[1][i];                                    //store in array key[]
         }else{                                                      //If the key has incorrect characters, ie non lower or upper case alphabetic characters
-            printf("Key must contain 26 alphabetic characters.\n");
+            printf("Key must contain 26 unique alphabetic characters.\n");
             exit(1);
         }
+            checkSum += key[i];                                     //Calculate the sum of the ascii values from 65-90.  It should == 2015, otherwise duplicates exist
         }//end of loop
+
+     printf("checkSum: %i\n", checkSum);
+     if (checkSum != 2015){
+        printf("Key must contain 26 unique alphabetic characters.\n");
+        exit(1);
+    }
 
     plainText = get_string("plaintext: ");
 
@@ -59,6 +71,7 @@ int main(int argC, string argV[]){
 
     //printf("alphabet length = %i \n", alphabetLength);
     //printf("plainText length = %i \n", plainTextLength);
+
     printf("ciphertext: ");
 
     for (int i=0; i < plainTextLength; i++){                //iterate through the user input
