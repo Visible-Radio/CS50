@@ -19,11 +19,11 @@ int main(void)
 
 string userInput = get_string("Enter text to be analysed: ");
 
-printf("Letters: %i \n", countLetters(userInput));
+//printf("Letters: %i \n", countLetters(userInput));
 
-printf("Words: %i \n", countWords(userInput));
+//printf("Words: %i \n", countWords(userInput));
 
-printf("Sentences: %i \n", countSentences(userInput));
+//printf("Sentences: %i \n", countSentences(userInput));
 
 int gradeo=grade(userInput);
 
@@ -108,9 +108,9 @@ int grade(string userInput)
     float S = (sentences*100)/words;
     float index = (0.0588 * L) - (0.296 * S) - 15.8;
     int grade = roundl(index);
-    printf("Letters per 100 words: %f\n", L);
-    printf("Sentences per 100: %f\n", S);
-    printf("index: %f\n", index);
+    //printf("Letters per 100 words: %f\n", L);
+    //printf("Sentences per 100: %f\n", S);
+    //printf("index: %f\n", index);
     return grade;
 }
 
