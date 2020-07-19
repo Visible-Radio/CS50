@@ -33,7 +33,7 @@ if (gradeo < 0)
 }
 else if (gradeo > 16)
 {
-    printf("Grade 16 +\n");
+    printf("Grade 16+\n");
 }
 else
 {
