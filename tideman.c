@@ -41,6 +41,7 @@ void print_pairs();
 void print_preferences();
 void mergeSort(pair array[], int left, int right);
 void merge(pair array[], int pleft, int qmiddle, int rright);
+int checkLoser(int loser, int winner);
 
 int main(int argc, string argv[])
 {
@@ -109,7 +110,7 @@ int main(int argc, string argv[])
 
 
     add_pairs();
-    print_pairs();
+    //print_pairs();
     sort_pairs();
     print_pairs();
 
@@ -395,9 +396,69 @@ void mergeSort(pair array[], int left, int right)
 // Lock pairs into the candidate graph in order, without creating cycles
 void lock_pairs(void)
 {
+    /*
+    Look at pairs[0]
+    Is the loser in this pair the winner in any locked pair?
+    go check...
+    If not, lock the pair.
+
+
+    create a separate function...something like:
+
+    checkLoser(target, pairs_index)
+
+    that takes as input the current place in the sorted pairs array
+    and the id of the losing candidate from the pair to look for in the .winner slots in the rest of the sorted pairs array
+
+    checkLoser will be called recursively until it runs through the entire pairs array and doesn't turn up the loser in a the winning position
+    or, it finds itself in the losing position again...
+    */
+
+
+    for (int i=0; i < pair_count-1; i++)
+    {
+
+
+
+
+    if (checkLoser(pairs[i].loser, pairs[i].winner) == 0)
+    {
+        locked[pairs[i].winner][pairs[i].loser] = true;
+
+    }
+
+
 
     return;
+    }
+
 }
+
+int checkLoser(int loser, int winner)
+{
+  // is the loser at pairs[i] a winner in any existing locked pair?
+
+  for (int i=0; i < pair_count-1; i ++)
+  {
+      if (pairs[i].loser == winner /* , && maybe checkforlockedpair here? */)
+      {
+          // we've found a cycle
+          // return to lockpairs() and do not lock the pair it is sitting on
+          return 1;
+      }
+
+      if ((pairs[i].winner == loser) && (locked[pairs[i].winner][pairs[i].loser] == true))
+      {
+          // if we find the incoming loser in the winning position, we need to check the loser again...
+          checkLoser(pairs[i].loser, pairs[i].winner);
+      }
+
+
+  }
+    return 0;
+}
+
+
 
 // Print the winner of the election
 void print_winner(void)
@@ -512,12 +573,15 @@ void print_pairs()
     // Let's see if I sorted the pairs array correctly
     // we need to see the winner for each pair and their tally of votes
 
-
+    printf("\n");
+    printf("Pairs array sorted by strength of victory\n");
 
     for (int i = 0; i < pair_count; i++)
     {
 
-    printf("%s %i\n", candidates[pairs[i].winner], preferences[pairs[i].winner][pairs[i].loser]);
+    printf("Index: %i     Winner: %8s (%i)     Loser: %8s (%i)    StOV: %i\n",
+    i, candidates[pairs[i].winner], preferences[pairs[i].winner][pairs[i].loser],
+    candidates[pairs[i].loser], preferences[pairs[i].loser][pairs[i].winner], preferences[pairs[i].winner][pairs[i].loser]);
 
     }
     printf("\n");
