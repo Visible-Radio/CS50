@@ -436,21 +436,22 @@ void lock_pairs(void)
 
 int checkLoser(int loser, int winner)
 {
-  // is the loser at pairs[i] a winner in any existing locked pair?
 
   for (int i=0; i < pair_count-1; i ++)
   {
-      if (pairs[i].loser == winner && (locked[pairs[i].winner][pairs[i].loser] == true) /* , && maybe checkforlockedpair here? */)
-      {
-          // we've found a cycle
-          // return to lockpairs() and do not lock the pair it is sitting on
-          return 1;
-      }
+
 
       if ((pairs[i].winner == loser) && (locked[pairs[i].winner][pairs[i].loser] == true))
       {
           // if we find the incoming loser in the winning position, we need to check the loser again...
           checkLoser(pairs[i].loser, pairs[i].winner);
+      }
+
+       if (pairs[i].loser == winner && (locked[pairs[i].winner][pairs[i].loser] == true) /* , && maybe checkforlockedpair here? */)
+      {
+          // we've found a cycle
+          // return to lockpairs() and do not lock the pair it is sitting on
+          return 1;
       }
 
 
