@@ -415,7 +415,7 @@ void lock_pairs(void)
     */
 
 
-    for (int i=0; i < pair_count-1; i++)
+    for (int i=0; i < pair_count; i++)
     {
 
 
@@ -423,7 +423,7 @@ void lock_pairs(void)
 
     //if (checkLoser(pairs[i].loser, pairs[i].winner) == 0)
     //{
-        locked[pairs[i].winner][pairs[i].loser] = false;
+        locked[pairs[i].winner][pairs[i].loser] = true;
 
     //}
 
@@ -437,7 +437,7 @@ void lock_pairs(void)
 int checkLoser(int loser, int winner)
 {
 
-  for (int i=0; i < pair_count-1; i ++)
+  for (int i=0; i < pair_count; i ++)
   {
         if (pairs[i].loser == winner && (locked[pairs[i].winner][pairs[i].loser] == true) /* , && maybe checkforlockedpair here? */)
       {
