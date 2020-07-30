@@ -440,7 +440,7 @@ int checkLoser(int loser, int winner)
 
   for (int i=0; i < pair_count-1; i ++)
   {
-      if (pairs[i].loser == winner /* , && maybe checkforlockedpair here? */)
+      if (pairs[i].loser == winner && (locked[pairs[i].winner][pairs[i].loser] == true) /* , && maybe checkforlockedpair here? */)
       {
           // we've found a cycle
           // return to lockpairs() and do not lock the pair it is sitting on
