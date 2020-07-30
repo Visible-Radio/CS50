@@ -447,7 +447,7 @@ int checkLoser(int loser, int winner)
       }
 
 
-      if ((pairs[i].winner != loser) && (locked[pairs[i].winner][pairs[i].loser] != true))
+      if ((pairs[i].winner == loser) && (locked[pairs[i].winner][pairs[i].loser] == true))
       {
           // if we find the incoming loser in the winning position, we need to check the loser again...
           checkLoser(pairs[i].loser, pairs[i].winner);
