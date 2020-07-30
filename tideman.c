@@ -429,8 +429,8 @@ void lock_pairs(void)
 
 
 
-    return;
     }
+    return;
 
 }
 
