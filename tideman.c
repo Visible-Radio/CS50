@@ -421,11 +421,11 @@ void lock_pairs(void)
 
 
 
-    //if (checkLoser(pairs[i].loser, pairs[i].winner) == 0)
-    //{
+    if (checkLoser(pairs[i].loser, pairs[i].winner) == 0)
+    {
         locked[pairs[i].winner][pairs[i].loser] = true;
 
-    //}
+    }
 
 
 
