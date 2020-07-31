@@ -41,7 +41,7 @@ void print_pairs();
 void print_preferences();
 void mergeSort(pair array[], int left, int right);
 void merge(pair array[], int pleft, int qmiddle, int rright);
-int checkLoser(int loser, int winner, int targetW, int targetL);
+int checkLoser(int loser, int winner, int targetW, int targetL, int index);
 
 int main(int argc, string argv[])
 {
@@ -421,7 +421,7 @@ void lock_pairs(void)
 
 
 
-    if (checkLoser(pairs[i].loser, pairs[i].winner, pairs[i].winner, pairs[i].loser) == 0)
+    if (checkLoser(pairs[i].loser, pairs[i].winner, pairs[i].winner, pairs[i].loser, i) == 0)
     {
         locked[pairs[i].winner][pairs[i].loser] = true;
 
@@ -434,7 +434,7 @@ void lock_pairs(void)
 
 }
 
-int checkLoser(int loser, int winner, int targetW, int targetL)
+int checkLoser(int loser, int winner, int targetW, int targetL, int index)
 {
     /*
     checkLoser recieves from lock_pairs() the index of the loser it is looking at
@@ -449,28 +449,25 @@ int checkLoser(int loser, int winner, int targetW, int targetL)
 
 
 
-  for (int i=0; i < pair_count; i ++)
-  {
-    if (i-1 >= 0)
-    {
-        if ((locked[pairs[i-1].winner][pairs[i-1].loser]==true))
 
-            if (targetW == pairs[i].winner && targetL == pairs[i].loser /* might need to check if previous pair is locked here */)
+
+    if (index-1 >= 0)
+    {
+        if (locked[pairs[index-1].winner][pairs[index-1].loser]==true)
+
+            if (targetW == pairs[index].winner && targetL == pairs[index].loser /* might need to check if previous pair is locked here */)
             {
                 return 1;
             }
     }
 
 
-
-
-
-     if (pairs[i].winner == loser && (locked[pairs[i].winner][pairs[i].loser]==true) )
+     if (pairs[index].winner == loser && (locked[pairs[index].winner][pairs[index].loser]==true) )
         {
-            checkLoser(pairs[i].loser, pairs[i].winner, targetW, targetL);
+            checkLoser(pairs[index].loser, pairs[index].winner, targetW, targetL, index);
         }
 
-  }
+
     return 0;
 }
 
