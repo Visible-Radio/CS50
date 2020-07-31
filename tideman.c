@@ -421,7 +421,7 @@ void lock_pairs(void)
 
 
 
-    if (checkLoser(pairs[i].loser, pairs[i].winner, pairs[i].winner, pairs[i].loser) != 1)
+    if (checkLoser(pairs[i].loser, pairs[i].winner, pairs[i].winner, pairs[i].loser) == 0)
     {
         locked[pairs[i].winner][pairs[i].loser] = true;
 
@@ -451,11 +451,17 @@ int checkLoser(int loser, int winner, int targetW, int targetL)
 
   for (int i=0; i < pair_count; i ++)
   {
-
-    if (targetW == pairs[i].winner && targetL == pairs[i].loser /* might need to check if pair is locked here */)
+    if (i-1 >= 0)
     {
-        return 1;
+        if ((locked[pairs[i-1].winner][pairs[i-1].loser]==true))
+
+            if (targetW == pairs[i].winner && targetL == pairs[i].loser /* might need to check if previous pair is locked here */)
+            {
+                return 1;
+            }
     }
+
+
 
 
 
