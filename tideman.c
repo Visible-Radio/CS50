@@ -41,7 +41,7 @@ void print_pairs();
 void print_preferences();
 void mergeSort(pair array[], int left, int right);
 void merge(pair array[], int pleft, int qmiddle, int rright);
-int checkLoser(int loser, int winner);
+int checkLoser(int loser, int winner, int target);
 
 int main(int argc, string argv[])
 {
@@ -421,7 +421,7 @@ void lock_pairs(void)
 
 
 
-    if (checkLoser(pairs[i].loser, pairs[i].winner) == 0)
+    if (checkLoser(pairs[i].loser, pairs[i].winner, pairs[i].loser) == 0)
     {
         locked[pairs[i].winner][pairs[i].loser] = true;
 
@@ -434,27 +434,35 @@ void lock_pairs(void)
 
 }
 
-int checkLoser(int loser, int winner)
+int checkLoser(int loser, int winner, int target)
 {
+    /*
+    checkLoser recieves from lock_pairs() the index of the loser it is looking at
+    and the index of the winner it is looking at
+
+    what are our base cases?
+    look for a locked pair in which the loser is the winner
+
+
+    */
+
+
+
 
   for (int i=0; i < pair_count; i ++)
   {
-        if (pairs[i].winner == winner && (locked[pairs[i].winner][pairs[i].loser] == true) /* , && maybe checkforlockedpair here? */)
-      {
-          // we've found a cycle
-          // return to lockpairs() and do not lock the pair it is sitting on
-          return 1;
-      }
 
-
-      if ((pairs[i].winner == loser) && (locked[pairs[i].winner][pairs[i].loser] == true))
-      {
-          // if we find the incoming loser in the winning position, we need to check the loser again...
-          checkLoser(pairs[i].loser, pairs[i].winner);
-      }
+    if (target == pairs[i].winner /* might need to check if pair is locked here */)
+    {
+        return 1;
+    }
 
 
 
+     if (pairs[i].winner == loser && (locked[pairs[i].winner][pairs[i].loser]==true) )
+        {
+            checkLoser(pairs[i].loser, pairs[i].winner, target);
+        }
 
   }
     return 0;
