@@ -41,7 +41,7 @@ void print_pairs();
 void print_preferences();
 void mergeSort(pair array[], int left, int right);
 void merge(pair array[], int pleft, int qmiddle, int rright);
-int checkLoser(int loser, int winner, int targetW, int targetL);
+void checkLoser(int loser, int winner, int originalLoser, int originalWinner);
 
 int main(int argc, string argv[])
 {
@@ -418,41 +418,73 @@ void lock_pairs(void)
     for (int i=0; i < pair_count; i++)
     {
 
+    checkLoser(pairs[i].loser, pairs[i].winner, pairs[i].loser, pairs[i].winner);
+    printf("%s  %s  %s\n", candidates[pairs[i].winner], candidates[pairs[i].loser], locked[pairs[i].winner][pairs[i].loser] ? "locked" : "");
 
-
-
-
-
-        locked[pairs[i].winner][pairs[i].loser] = true;
-
-
-
-
-
-    }
-    return;
-
-}
-
-int checkLoser(int loser, int winner, int targetW, int targetL)
-{
     /*
-    checkLoser recieves from lock_pairs() the index of the loser it is looking at
-    and the index of the winner it is looking at
 
-    what are our base cases?
-    look for a locked pair in which the loser is the winner
+        if (checkLoser(pairs[i].loser, pairs[i].winner, i) == 0)
+            {
+                locked[pairs[i].winner][pairs[i].loser] = true;     // Confirmed to work with check50
+
+            }
+
+    printf("%s  %s  %s\n", candidates[pairs[i].winner], candidates[pairs[i].loser], locked[pairs[i].winner][pairs[i].loser] ? "locked" : "");
 
 
     */
 
+    }
+
+    return;
+
+}
+
+void checkLoser(int loser, int winner, int originalLoser, int originalWinner)
+{
+
+
+    for (int i = 0; i < pair_count; i ++)
+    {
+
+    /*
+    check to see if its locked
+    if it is, recurse
+    it is not locked, lock originals
+    */
+
+    // need a dang base case
+
+    if (pairs[i].winner == loser && loser == originalLoser && (locked[pairs[i].winner][pairs[i].loser] ==true))
+    {
+        return;
+    }
 
 
 
 
+    if (locked[pairs[i].winner][pairs[i].loser] ==true)
+        {
+            if (pairs[i].winner == loser)
+            {
+
+                printf("recursion...it's happening \n");
+                checkLoser(pairs[i].loser, pairs[i].winner, originalLoser, originalWinner);
+
+            }
+        }
+        else    // if not locked, lock the originals and return
+        {
+            locked[originalWinner][originalLoser] = true;
+            return;
+        }
 
 
-    return 0;
+
+    }
+
+
+
 }
 
 
