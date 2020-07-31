@@ -452,7 +452,7 @@ int checkLoser(int loser, int winner, int target)
   for (int i=0; i < pair_count; i ++)
   {
 
-    if (target == pairs[i].winner /* might need to check if pair is locked here */)
+    if (target == pairs[i].loser /* might need to check if pair is locked here */)
     {
         return 1;
     }
