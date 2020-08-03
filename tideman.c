@@ -41,7 +41,7 @@ void print_pairs();
 void print_preferences();
 void mergeSort(pair array[], int left, int right);
 void merge(pair array[], int pleft, int qmiddle, int rright);
-void checkLoser(int loser, int winner, int originalLoser, int originalWinner);
+bool isCycle(int winner, int loser);
 
 int main(int argc, string argv[])
 {
@@ -393,99 +393,79 @@ void mergeSort(pair array[], int left, int right)
 
 
 
+
+
+
+
 // Lock pairs into the candidate graph in order, without creating cycles
 void lock_pairs(void)
 {
-    /*
-    Look at pairs[0]
-    Is the loser in this pair the winner in any locked pair?
-    go check...
-    If not, lock the pair.
 
-
-    create a separate function...something like:
-
-    checkLoser(target, pairs_index)
-
-    that takes as input the current place in the sorted pairs array
-    and the id of the losing candidate from the pair to look for in the .winner slots in the rest of the sorted pairs array
-
-    checkLoser will be called recursively until it runs through the entire pairs array and doesn't turn up the loser in a the winning position
-    or, it finds itself in the losing position again...
-    */
-
-
-    for (int i=0; i < pair_count; i++)
+    for (int i = 0; i < pair_count; i++)
     {
+        // if isCycle returns false, it has not deteced a cycle and the pair can be locked
+        if (isCycle(pairs[i].winner, pairs[i].loser)==false)
+        {
+            locked[pairs[i].winner][pairs[i].loser] = true;
+            printf("%s  %s  %s\n", candidates[pairs[i].winner], candidates[pairs[i].loser], locked[pairs[i].winner][pairs[i].loser] ? "locked" : "");
 
-    checkLoser(pairs[i].loser, pairs[i].winner, pairs[i].loser, pairs[i].winner);
-    printf("%s  %s  %s\n", candidates[pairs[i].winner], candidates[pairs[i].loser], locked[pairs[i].winner][pairs[i].loser] ? "locked" : "");
+        }
+   else
+        {
 
-    /*
+            printf("%s  %s  %s\n", candidates[pairs[i].winner], candidates[pairs[i].loser], locked[pairs[i].winner][pairs[i].loser] ? "locked" : "");
+        }
 
-        if (checkLoser(pairs[i].loser, pairs[i].winner, i) == 0)
-            {
-                locked[pairs[i].winner][pairs[i].loser] = true;     // Confirmed to work with check50
-
-            }
-
-    printf("%s  %s  %s\n", candidates[pairs[i].winner], candidates[pairs[i].loser], locked[pairs[i].winner][pairs[i].loser] ? "locked" : "");
-
-
-    */
 
     }
 
-    return;
+return;
 
 }
 
-void checkLoser(int loser, int winner, int originalLoser, int originalWinner)
+
+
+
+bool isCycle(int winner, int loser)
 {
 
+    /* base case, if the loser that gets passed into the function
+    has previously been locked onto the winner that gets passed in
+    there is definitely a cycle and the pair that was passed in
+    should not be locked
 
-    for (int i = 0; i < pair_count; i ++)
-    {
-
-    /*
-    check to see if its locked
-    if it is, recurse
-    it is not locked, lock originals
     */
 
-    // need a dang base case
-
-    if (pairs[i].winner == loser && loser == originalLoser && (locked[pairs[i].winner][pairs[i].loser] ==true))
+if (locked[loser][winner] == true)
     {
-        return;
+        return true;
     }
 
 
 
-
-    if (locked[pairs[i].winner][pairs[i].loser] ==true)
-        {
-            if (pairs[i].winner == loser)
-            {
-
-                printf("recursion...it's happening \n");
-                checkLoser(pairs[i].loser, pairs[i].winner, originalLoser, originalWinner);
-
-            }
-        }
-        else    // if not locked, lock the originals and return
-        {
-            locked[originalWinner][originalLoser] = true;
-            return;
-        }
-
-
+for (int i = 0; i < candidate_count; i++)
+    if (locked[i][winner] == true)
+    {
+        return isCycle(i,loser);
 
     }
 
 
 
+return false;
 }
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
