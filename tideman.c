@@ -113,12 +113,10 @@ int main(int argc, string argv[])
     //print_pairs();
     sort_pairs();
     print_pairs();
-
     lock_pairs();
-/*
     print_winner();
     return 0;
-*/
+
 }//END OF MAIN
 
 
@@ -403,17 +401,18 @@ void lock_pairs(void)
 
     for (int i = 0; i < pair_count; i++)
     {
+        printf("Looking at pair %s %s\n", candidates[pairs[i].winner], candidates[pairs[i].loser]);
         // if isCycle returns false, it has not deteced a cycle and the pair can be locked
         if (isCycle(pairs[i].winner, pairs[i].loser)==false)
         {
             locked[pairs[i].winner][pairs[i].loser] = true;
-            printf("%s  %s  %s\n", candidates[pairs[i].winner], candidates[pairs[i].loser], locked[pairs[i].winner][pairs[i].loser] ? "locked" : "");
+            printf("%s  %s  %s\n\n", candidates[pairs[i].winner], candidates[pairs[i].loser], locked[pairs[i].winner][pairs[i].loser] ? "locked" : "");
 
         }
    else
         {
 
-            printf("%s  %s  %s\n", candidates[pairs[i].winner], candidates[pairs[i].loser], locked[pairs[i].winner][pairs[i].loser] ? "locked" : "");
+            printf("%s  %s  %s\n\n", candidates[pairs[i].winner], candidates[pairs[i].loser], locked[pairs[i].winner][pairs[i].loser] ? "locked" : "not locked");
         }
 
 
@@ -435,23 +434,42 @@ bool isCycle(int winner, int loser)
     should not be locked
 
     */
-
+printf("checking if locked[%s][%s] [loser][winner] == true \n", candidates[loser], candidates[winner] );
 if (locked[loser][winner] == true)
     {
+        printf("locked[%s][%s] == true \n", candidates[loser], candidates[winner]);
+        printf("Returning true\n");
         return true;
     }
+    else
+    {
+        printf("locked[%s][%s] == false \n", candidates[loser], candidates[winner]);
+    }
+
 
 
 
 for (int i = 0; i < candidate_count; i++)
-    if (locked[i][winner] == true)
     {
-        return isCycle(i,loser);
+        printf("checking if locked[%s][%s] [i][winner] == true   \n", candidates[i], candidates[winner] );
+        if (locked[i][winner] == true)
+        {
+            printf("locked[%s][%s] == true \n", candidates[i], candidates[winner] );
+            printf("calling isCycle(%s, %s) (i, loser) \n", candidates[i], candidates[loser]);
 
+
+            //printf ("%s", isCycle(i,loser) ? "recursive call isCycle(i, loser) will return true \n\n" : "recursive call isCycle(i, loser) returned false \n");
+            return isCycle(i,loser);
+
+
+        }
+        else
+        {
+            printf("locked[%s][%s] == false \n", candidates[i], candidates[winner] );
+        }
     }
 
-
-
+printf("Returning false\n");
 return false;
 }
 
@@ -472,6 +490,31 @@ return false;
 // Print the winner of the election
 void print_winner(void)
 {
+int bit;
+
+    for (int i = 0; i < candidate_count; i++)
+    {
+        bit=1;
+        for ( int j=0; j < candidate_count; j++)
+        {
+            if (!locked[j][i])
+            {
+            bit *=1;
+
+            }
+            else
+            {
+                bit*=0;
+            }
+
+
+
+        }
+        if (bit == 1)
+        {
+        printf("%s\n", candidates[i]);
+        }
+    }
 
     return;
 }
