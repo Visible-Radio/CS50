@@ -360,12 +360,12 @@ void edges(int height, int width, RGBTRIPLE image[height][width])
     int gy_rgbtRed =0;
 
 
-    for (int i=0; i < height; i++)
+    for (int i=1; i < height+1; i++)
     {
-        for (int j=0; j < width; j++)
+        for (int j=1; j < width+1; j++)
         {
 
-               if (i > 0 && i < height -1 && j > 0 && j < width -1)
+               if (i > 0 && i < height  && j > 0 && j < width )
                {
                     float blue =0;
                     float green =0;
