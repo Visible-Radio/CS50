@@ -343,8 +343,101 @@ void edges(int height, int width, RGBTRIPLE image[height][width])
     {
         for (int j=0; j < width; j++)
         {
-            if (i > 0 && i < height -1 && j > 0 && j < width -1) // quick and dirty condition ignoring edge cases
-            {
+
+               /* if (i > 0 && i < height -1 && j > 0 && j < width -1)
+
+                    // quick and dirty, don't bother with edges or corners, just the meat of the image
+
+                    // default settings for pixels that aren't edges or corners
+                */
+
+                    int row_offset = -1;
+                    int column_offset = -1;
+                    int row_limit = 1;
+                    int column_limit = 1;
+
+
+                // set bounds for edge cases
+
+                if (i==0 && j > 0 && j < width-1)
+                    // top row meat
+                {
+                    row_offset = 0;
+                    row_limit = 1;
+                    column_offset = -1;
+                    column_limit = 1;
+                }
+
+
+                else if (i==height-1 && j > 0 && j < width-1)
+                {
+                    // bottom row meat
+                    row_offset = -1;
+                    row_limit = 0;
+                    column_offset = -1;
+                    column_limit = 1;
+                }
+
+                else if (j==0 && i != 0 && i != height-1)
+                    // left side meat
+                {
+                    column_offset = 0;
+                    column_limit = 1;
+                    row_offset = -1;
+                    row_limit = 1;
+                }
+
+                else if (j==width-1 && i != 0 && i != height-1)
+                {
+                    // right side meat
+                    column_offset = -1;
+                    column_limit = 0;
+                    row_offset = -1;
+                    row_limit = 1;
+                }
+
+                else if (i==0 && j==0)
+                {
+                    // top left corner
+                    column_offset = 0;
+                    column_limit = 1;
+                    row_offset = 0;
+                    row_limit = 1;
+                }
+
+                else if (i==0 && j==width-1)
+                {
+                    // top right corner
+                    column_offset = -1;
+                    column_limit = 0;
+                    row_offset = 0;
+                    row_limit = 1;
+                }
+
+                else if (i==height-1 && j==0)
+                {
+                    // bottom left corner
+                    column_offset = 0;
+                    column_limit = 1;
+                    row_offset = -1;
+                    row_limit = 0;
+                }
+
+                else if (i==height-1 && j==width-1)
+                {
+                    // bottom right corner
+                    column_offset = -1;
+                    column_limit = 0;
+                    row_offset = -1;
+                    row_limit = 0;
+                }
+
+
+                float blue =0;
+                float green =0;
+                float red =0;
+                int neighbor_count = 0;
+
 
                 /*  k and l provide offsets for the main cursor at [i][j]
                     so as to look at the surounding pixels in a 3x3 square
@@ -363,9 +456,9 @@ void edges(int height, int width, RGBTRIPLE image[height][width])
 
 
 
-                for (int k=-1; k <= 1; k ++)
+                for (int k=row_offset; k <= row_limit; k ++)
                 {
-                    for (int l=-1; l <= 1; l++)
+                    for (int l=column_offset; l <= column_limit; l++)
                     {
                         /*  here's where we do the math for gx and gy
                             can not store the multipliers in an array that gets indexed with [k][l] because the indexes would be negative
@@ -421,7 +514,7 @@ void edges(int height, int width, RGBTRIPLE image[height][width])
 
 
 
-            }
+
         }
     }
 
