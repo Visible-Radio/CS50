@@ -363,13 +363,13 @@ void edges(int height, int width, RGBTRIPLE image[height][width])
     int gy_rgbtRed =0;
 
 
-    for (int i=1; i < height; i++)
+    for (int i=1; i < copy_height-1; i++)
     {
-        for (int j=1; j < width; j++)
+        for (int j=1; j < copy_width-1; j++)
         {
 
-               if (i > 0 && i < copy_height-1  && j > 0 && j < copy_width-1 )
-               {
+               //if (i > 0 && i < copy_height-1  && j > 0 && j < copy_width-1 )
+               //{
                     float blue =0;
                     float green =0;
                     float red =0;
@@ -447,7 +447,7 @@ void edges(int height, int width, RGBTRIPLE image[height][width])
                     {
                         image[i-1][j-1].rgbtRed = new_pixelRed;
                     }
-               }
+               //}
 
 
 
