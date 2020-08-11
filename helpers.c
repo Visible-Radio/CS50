@@ -240,9 +240,9 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
                 }
 
 
-                int blue =0;
-                int green =0;
-                int red =0;
+                float blue =0;
+                float green =0;
+                float red =0;
                 int neighbor_count = 0;
 
                 for (int k=row_offset; k <= row_limit; k++)
