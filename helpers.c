@@ -289,7 +289,7 @@ void edges(int height, int width, RGBTRIPLE image[height][width])
 
     RGBTRIPLE image_copy[height+2][width+2];
 
-    for (int j=0; j < height+2; j++)
+    for (int j=0; j < width+2; j++)
     {
         image_copy[0][j].rgbtBlue = 0;
         image_copy[0][j].rgbtGreen = 0;
