@@ -420,29 +420,29 @@ void edges(int height, int width, RGBTRIPLE image[height][width])
 
                     if (new_pixelBlue > 255)
                     {
-                        image[i][j].rgbtBlue = 255;
+                        image[i-1][j-1].rgbtBlue = 255;
                     }
                     else
                     {
-                        image[i][j].rgbtBlue = new_pixelBlue;
+                        image[i-1][-1].rgbtBlue = new_pixelBlue;
                     }
 
                        if (new_pixelGreen > 255)
                     {
-                        image[i][j].rgbtGreen = 255;
+                        image[i-1][j-1].rgbtGreen = 255;
                     }
                     else
                     {
-                        image[i][j].rgbtGreen = new_pixelGreen;
+                        image[i-1][j-1].rgbtGreen = new_pixelGreen;
                     }
 
                        if (new_pixelRed > 255)
                     {
-                        image[i][j].rgbtRed = 255;
+                        image[i-1][j-1].rgbtRed = 255;
                     }
                     else
                     {
-                        image[i][j].rgbtRed = new_pixelRed;
+                        image[i-1][j-1].rgbtRed = new_pixelRed;
                     }
                }
 
