@@ -365,7 +365,7 @@ void edges(int height, int width, RGBTRIPLE image[height][width])
         for (int j=1; j < width+1; j++)
         {
 
-               if (i > 0 && i < height  && j > 0 && j < width )
+               if (i > 0 && i < height+1  && j > 0 && j < width+1 )
                {
                     float blue =0;
                     float green =0;
