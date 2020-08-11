@@ -287,35 +287,38 @@ void edges(int height, int width, RGBTRIPLE image[height][width])
     // make a copy of image for reference
     // add a 1 px black border in the copy
 
-    RGBTRIPLE image_copy[height+2][width+2];
+    int copy_width = width+2;
+    int copy_height = height+2;
 
-    for (int j=0; j < width+2; j++)
+    RGBTRIPLE image_copy[copy_height][copy_width];
+
+    for (int j=0; j < copy_width; j++)
     {
         image_copy[0][j].rgbtBlue = 0;
         image_copy[0][j].rgbtGreen = 0;
         image_copy[0][j].rgbtRed = 0;
 
-        image_copy[height+1][j].rgbtBlue = 0;
-        image_copy[height+1][j].rgbtGreen = 0;
-        image_copy[height+1][j].rgbtRed = 0;
+        image_copy[copy_height-1][j].rgbtBlue = 0;
+        image_copy[copy_height-1][j].rgbtGreen = 0;
+        image_copy[copy_height-1][j].rgbtRed = 0;
     }
 
-     for (int i=0; i < height+2; i++)
+     for (int i=0; i < copy_height; i++)
     {
         image_copy[i][0].rgbtBlue = 0;
         image_copy[i][0].rgbtGreen = 0;
         image_copy[i][0].rgbtRed = 0;
 
-        image_copy[i][width+1].rgbtBlue = 0;
-        image_copy[i][width+1].rgbtGreen = 0;
-        image_copy[i][width+1].rgbtRed = 0;
+        image_copy[i][copy_width-1].rgbtBlue = 0;
+        image_copy[i][copy_width-1].rgbtGreen = 0;
+        image_copy[i][copy_width-1].rgbtRed = 0;
     }
 
-    for (int i =1; i < height-1; i ++)
+    for (int i =0; i < height; i ++)
     {
-        for (int j=1; j < width-1; j++)
+        for (int j=0; j < width; j++)
         {
-            image_copy[i][j] = image[i][j];
+            image_copy[i+1][j+1] = image[i][j];
         }
     }
 
@@ -360,12 +363,12 @@ void edges(int height, int width, RGBTRIPLE image[height][width])
     int gy_rgbtRed =0;
 
 
-    for (int i=1; i < height+1; i++)
+    for (int i=1; i < height; i++)
     {
-        for (int j=1; j < width+1; j++)
+        for (int j=1; j < width; j++)
         {
 
-               if (i > 0 && i < height+1  && j > 0 && j < width+1 )
+               if (i > 0 && i < copy_height-1  && j > 0 && j < copy_width-1 )
                {
                     float blue =0;
                     float green =0;
