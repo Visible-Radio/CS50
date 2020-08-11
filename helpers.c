@@ -18,7 +18,7 @@ void grayscale(int height, int width, RGBTRIPLE image[height][width])
         // for each pixel in row, take the average of the colour channels
         // set each colour channel to this average
 
-    int average;
+    float average;
 
     for (int i=0; i < height; i++)
     {
