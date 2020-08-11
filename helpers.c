@@ -323,24 +323,20 @@ void edges(int height, int width, RGBTRIPLE image[height][width])
 
     int gx_mults[9] = {-1, 0, 1, -2, 0, 2, -1, 0, 1};
     int gy_mults[9] = {-1, -2, -1, 0, 0, 0, 1, 2, 1};
-    RGBTRIPLE gx;
-    RGBTRIPLE gy;
 
     int new_pixelBlue =0;
     int new_pixelGreen =0;
     int new_pixelRed =0;
 
-    gx.rgbtBlue =0;
-    gx.rgbtGreen =0;
-    gx.rgbtRed =0;
+    int gx_rgbtBlue =0;
+    int gx_rgbtGreen =0;
+    int gx_rgbtRed =0;
 
-    gx.rgbtBlue =0;
-    gx.rgbtGreen =0;
-    gx.rgbtRed =0;
+    int gy_rgbtBlue =0;
+    int gy_rgbtGreen =0;
+    int gy_rgbtRed =0;
 
-    gx.rgbtBlue =0;
-    gx.rgbtGreen =0;
-    gx.rgbtRed =0;
+
 
 
     for (int i=0; i < height; i++)
@@ -357,17 +353,15 @@ void edges(int height, int width, RGBTRIPLE image[height][width])
 
                 int mult_index = 0;
 
-                gx.rgbtBlue =0;
-                gx.rgbtGreen =0;
-                gx.rgbtRed =0;
+                gx_rgbtBlue =0;
+                gx_rgbtGreen =0;
+                gx_rgbtRed =0;
 
-                gx.rgbtBlue =0;
-                gx.rgbtGreen =0;
-                gx.rgbtRed =0;
+                gy_rgbtBlue =0;
+                gy_rgbtGreen =0;
+                gy_rgbtRed =0;
 
-                gx.rgbtBlue =0;
-                gx.rgbtGreen =0;
-                gx.rgbtRed =0;
+
 
                 for (int k=-1; k <= 1; k ++)
                 {
@@ -378,13 +372,13 @@ void edges(int height, int width, RGBTRIPLE image[height][width])
                             use a 1d array with its own index
 
                         */
-                        gx.rgbtBlue     += (image_copy[i+k][j+l].rgbtBlue)*gx_mults[mult_index];
-                        gx.rgbtGreen    += (image_copy[i+k][j+l].rgbtGreen)*gx_mults[mult_index];
-                        gx.rgbtRed      += (image_copy[i+k][j+l].rgbtRed)*gx_mults[mult_index];
+                        gx_rgbtBlue     += (image_copy[i+k][j+l].rgbtBlue*gx_mults[mult_index]);
+                        gx_rgbtGreen    += (image_copy[i+k][j+l].rgbtGreen*gx_mults[mult_index]);
+                        gx_rgbtRed      += (image_copy[i+k][j+l].rgbtRed*gx_mults[mult_index]);
 
-                        gy.rgbtBlue     += (image_copy[i+k][j+l].rgbtBlue)*gy_mults[mult_index];
-                        gy.rgbtGreen    += (image_copy[i+k][j+l].rgbtGreen)*gy_mults[mult_index];
-                        gy.rgbtRed      += (image_copy[i+k][j+l].rgbtRed)*gy_mults[mult_index];
+                        gy_rgbtBlue     += (image_copy[i+k][j+l].rgbtBlue*gy_mults[mult_index]);
+                        gy_rgbtGreen    += (image_copy[i+k][j+l].rgbtGreen*gy_mults[mult_index]);
+                        gy_rgbtRed      += (image_copy[i+k][j+l].rgbtRed*gy_mults[mult_index]);
 
                         mult_index ++;
                     }
@@ -394,9 +388,9 @@ void edges(int height, int width, RGBTRIPLE image[height][width])
                 // combine results of gx and gy
                 // cap results at 255
 
-                new_pixelBlue = round(sqrt(pow(gx.rgbtBlue,2) + pow(gy.rgbtBlue,2)));
-                new_pixelGreen = round(sqrt((gx.rgbtGreen*gx.rgbtGreen) + (gy.rgbtGreen*gy.rgbtGreen)));
-                new_pixelRed = round(sqrt((gx.rgbtRed*gx.rgbtRed) + (gy.rgbtRed*gy.rgbtRed)));
+                new_pixelBlue = round(sqrt(pow(gx_rgbtBlue,2) + pow(gy_rgbtBlue,2)));
+                new_pixelGreen = round(sqrt((gx_rgbtGreen*gx_rgbtGreen) + (gy_rgbtGreen*gy_rgbtGreen)));
+                new_pixelRed = round(sqrt((gx_rgbtRed*gx_rgbtRed) + (gy_rgbtRed*gy_rgbtRed)));
 
                 if (new_pixelBlue > 255)
                 {
