@@ -91,8 +91,10 @@ bool load(const char *dictionary)
 else false. char* dictionary read from command line and passed
 to load function by driver program */
 {
+    /*
     printf("Bytes for empty hash table: %lu \n", sizeof(node)*N);
     printf("Bytes per int %lu \n", sizeof(int));
+    */
 
     //Open dictionary file
     FILE *file = fopen(dictionary, "r");
@@ -154,9 +156,11 @@ to load function by driver program */
         //free(node);
     }
 
+    /*
     printf("entry count: %i\n", entry_count);
     printf("collision count: %i\n", collision_count);
     printf("nodes created: %i\n", nodes_created);
+    */
     fclose(file);
     loaded = true;
 
@@ -237,7 +241,9 @@ bool unload(void)
         }
     }
 
+    /*
     printf("Nodes freed: %i \n", nodes_freed);
     printf("Void slots: %i \n", void_slot);
+    */
     return true;
 }
