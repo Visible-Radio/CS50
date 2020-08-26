@@ -38,7 +38,7 @@ def STR_find_and_count(DNA_STR):
         while True:
             left_index=DNAsequence.find(DNA_STR,left_index,right_index)
             if left_index!=-1:
-                occurencesS.append(left_index)
+                #occurencesS.append(left_index)
                 STR_counter+=1
                 left_index+=increment
                 #store left index in case .find evaluates to -1 in the next iteration
@@ -48,7 +48,7 @@ def STR_find_and_count(DNA_STR):
             else:
                 if STR_counter > STR_streak:
                     STR_streak = STR_counter
-                    streak_locations.append(occurencesS[(-1*STR_counter)])
+                    #streak_locations.append(occurencesS[(-1*STR_counter)])
                 break
 
     mystery_Id.append(STR_streak)
