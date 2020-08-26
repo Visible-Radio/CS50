@@ -1,19 +1,6 @@
 from sys import argv, exit
 import csv
 
-# get command line arguments
-# first argument is Database file
-# second argument is DNA sequence file to look through
-
-#argv list is zero indexed
-#the python file being executed is in position 0
-
-#for i in range(len(argv)):
-#    print(i, end=" ")
-#    print(argv[i])
-
-#print (len(argv))
-
 if len(argv) != 3:
     print("Specify DNA database followed by sequence sample\npython dna.py databases/database.csv sequences/sequence.txt")
     exit(1)
@@ -28,14 +15,8 @@ while file.read(1) != '':
     char_count+=1
 
 file.close()
-#print(f"Chars in file: {char_count}")
-#print(f"Length as determined by len(){len(DNAsequence)}")
 
-#DNA_STR = ""
-occurencesS=[]
-streak_locations = []
 mystery_Id = []
-
 def STR_find_and_count(DNA_STR):
     #returns the length of longest occuring streak of the input STR
     increment=len(DNA_STR)
@@ -69,19 +50,6 @@ def STR_find_and_count(DNA_STR):
     mystery_Id.append(STR_streak)
     return STR_streak
 
-#def STR_info(DNA_STR):
-#    #prints out information about where STRs occured in the file
-#    if len(streak_locations) > 0:
-#        print(f"Largest occuring streak of {DNA_STR}: {STR_find_and_count(DNA_STR)}, beginning at {streak_locations[-1]}",)
-#        print ("STR matches at: ", end="")
-#        for i in range(len(occurencesS)):
-#           print(f"{occurencesS[i]}", end=", ")
-#        print("")
-#    occurencesS.clear()
-#    streak_locations.clear()
-
-#STR_info(DNA_STR)
-
 # read csv file as a list of lists
 with open(argv[1], 'r') as csv_file:
     # pass the file object to reader() to get the reader object
@@ -95,7 +63,6 @@ with open(argv[1], 'r') as csv_file:
 # this syntax creates a new list with the first row, excluding
 # the first column
 STR_list = list_of_rows[0][1:]
-
 
 for i in range(len(STR_list)):
     DNA_STR = STR_list[i]
@@ -113,5 +80,3 @@ else:
     print("No Match")
 
 csv_file.close()
-
-
