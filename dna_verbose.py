@@ -88,7 +88,7 @@ with open(argv[1], 'r') as csv_file:
     csv_reader = csv.reader(csv_file)
     # Pass reader object to list() to get a list of lists
     list_of_rows = list(csv_reader)
-
+#    print(list_of_rows)
 
 
 
@@ -98,11 +98,17 @@ with open(argv[1], 'r') as csv_file:
 # this syntax creates a new list with the first row, excluding
 # the first column
 STR_list = list_of_rows[0][1:]
-
+#print(f"Searching supplied sequence for: {STR_list}")
 
 for i in range(len(STR_list)):
     DNA_STR = STR_list[i]
     STR_find_and_count(STR_list[i])
+
+print(mystery_Id)
+
+print(list_of_rows)
+
+
 
 tmp=[]
 for lst in list_of_rows[1:]:
