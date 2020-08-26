@@ -69,16 +69,16 @@ def STR_find_and_count(DNA_STR):
     mystery_Id.append(STR_streak)
     return STR_streak
 
-def STR_info(DNA_STR):
-    #prints out information about where STRs occured in the file
-    if len(streak_locations) > 0:
-        print(f"Largest occuring streak of {DNA_STR}: {STR_find_and_count(DNA_STR)}, beginning at {streak_locations[-1]}",)
-        print ("STR matches at: ", end="")
-        for i in range(len(occurencesS)):
-           print(f"{occurencesS[i]}", end=", ")
-        print("")
-    occurencesS.clear()
-    streak_locations.clear()
+#def STR_info(DNA_STR):
+#    #prints out information about where STRs occured in the file
+#    if len(streak_locations) > 0:
+#        print(f"Largest occuring streak of {DNA_STR}: {STR_find_and_count(DNA_STR)}, beginning at {streak_locations[-1]}",)
+#        print ("STR matches at: ", end="")
+#        for i in range(len(occurencesS)):
+#           print(f"{occurencesS[i]}", end=", ")
+#        print("")
+#    occurencesS.clear()
+#    streak_locations.clear()
 
 #STR_info(DNA_STR)
 
@@ -88,9 +88,6 @@ with open(argv[1], 'r') as csv_file:
     csv_reader = csv.reader(csv_file)
     # Pass reader object to list() to get a list of lists
     list_of_rows = list(csv_reader)
-
-
-
 
 # create a list of the STR patterns from this database that
 # we will search for in the supplied sequence text files
@@ -108,7 +105,7 @@ tmp=[]
 for lst in list_of_rows[1:]:
     tmp = lst[1:]
     tmp = [ int(x) for x in tmp ]
-#    print(tmp)
+
     if tmp == mystery_Id:
         print(lst[0])
         break
