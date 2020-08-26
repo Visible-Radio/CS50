@@ -16,7 +16,11 @@ while file.read(1) != '':
 
 file.close()
 
+
+#occurencesS=[]
+#streak_locations = []
 mystery_Id = []
+
 def STR_find_and_count(DNA_STR):
     #returns the length of longest occuring streak of the input STR
     increment=len(DNA_STR)
@@ -50,6 +54,8 @@ def STR_find_and_count(DNA_STR):
     mystery_Id.append(STR_streak)
     return STR_streak
 
+
+
 # read csv file as a list of lists
 with open(argv[1], 'r') as csv_file:
     # pass the file object to reader() to get the reader object
@@ -63,6 +69,7 @@ with open(argv[1], 'r') as csv_file:
 # this syntax creates a new list with the first row, excluding
 # the first column
 STR_list = list_of_rows[0][1:]
+
 
 for i in range(len(STR_list)):
     DNA_STR = STR_list[i]
@@ -80,3 +87,5 @@ else:
     print("No Match")
 
 csv_file.close()
+
+
