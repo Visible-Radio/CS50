@@ -1,5 +1,5 @@
 
-SELECT title, year FROM movies WHERE id IN
+SELECT title FROM movies WHERE id IN
 
 -- You can select from another select statement without going through a column
 -- SELECT all the movie ids FROM (A list of movies with Johnny Depp)
