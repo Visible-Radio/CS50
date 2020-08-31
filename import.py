@@ -21,7 +21,7 @@ with open(argv[1], "r") as characters:
         #by default it splits when it finds whitespace
         names_ls = row["name"].split()
         if len(names_ls) != 3:
-            names_ls.insert(-1, "NULL")
+            names_ls.insert(-1, None)
 
         #Insert fields from csv by substituting values into each ? placeholder
         db.execute("INSERT INTO students (first, middle, last, house, birth) VALUES(?, ?, ?, ?, ?)", names_ls[0], names_ls[1], names_ls[2], row["house"], row["birth"])
