@@ -1,0 +1,58 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Portfolio
+{% endblock %}
+
+{% block main %}
+    <h1>Holdings</h1>
+    <table class="table table-striped" style="text-align:left;">
+        <thead>
+            <tr>
+                <th>Symbol</th>
+                <th>Name</th>
+                <th>Shares</th>
+                <th>Price</th>
+                <th>Total</th>
+                <th colspan='3'></th>
+            </tr>
+        </thead>
+        <tfoot>
+            <tr>
+                <td colspan="4"></td>
+                <td><b>{{ Ttotal }}</b></td>
+                <td colspan="3"></td>
+            </tr>
+        </tfoot>
+        <tbody>
+        <form method="post">
+        {% for row in portfolio %}
+            {% if row['shares'] != 0 %}
+                <tr>
+                    <td>{{ row['symbol'] }}</td>
+                    <td>{{ row['name'] }} </td>
+                    <td>{{ row['shares'] }}</td>
+                    <td>{{ row['price'] }}</td>
+                    <td>{{ row['total'] }}</td>
+                    <td>
+                        <input type="radio" name="symbol" value="{{ row['symbol']}}" >
+                    </td>
+                </tr>
+            {% endif %}
+        {% endfor %}
+            <tr>
+                <td colspan="4">CASH</td>
+                <td>{{ cash }}</td>
+                <td colspan="3"></td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="form-group">
+        <input autocomplete="off" class="form-control" min="1" name="shares"
+        placeholder="Shares" type="number" required style="display:inline-block;">
+    </div>
+    <button style="display:inline-block;" class="btn btn-primary" type="submit" formaction="/buy" value="buy">Buy</button>
+    <button style="display:inline-block;" class="btn btn-primary" type="submit" formaction="/sell">Sell</button>
+    </form>
+
+{% endblock %}
