@@ -1,0 +1,207 @@
+/*
+background: #1d2024
+cell bg #121317
+border color: #333641
+unlit leds: #1d2024
+text input not focused: #251518
+text input focused: #511716
+button: #7b0100
+button text: #440403
+gold main text: #a79059
+
+@font-face {
+  font-family: 'DSEG14ClassicRegular';
+  src: url('DSEG14Classic-Regular.ttf')
+
+}
+*/
+
+body {
+  margin: 0;
+  padding: 0;
+  /*
+    */
+  display: inline-block;
+  justify-content: center;
+  align-items: center;
+
+  height: 90vmin;
+  background: grey;
+  background: #251518;
+  font-family: "DSEG14ClassicRegular";
+  font-size: 7vw;
+}
+
+.display_container {
+  display: flex;
+  margin: 0px 0px 0px 0px;
+  border: 0;
+  padding: 0;
+  background-color: #251518;
+  /*
+
+  background-color: #161a2b;
+  border: 0.06em solid #333641;
+  padding: 0.03em;
+  */
+}
+
+table {
+  float: left;
+  margin: 0px 0px 0px 0px;
+  border: 0.06em solid #333641;
+  padding: 0.01em;
+  background-color: #121317;
+}
+
+td {
+  border: 0.04em solid #333641;
+  padding: 0.03em;
+  background-color: #121317;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.layer {
+  position: absolute;
+}
+
+/*
+JS to control class stauts of each character
+.off turns oppacity to 0 for all layers except the background 14 seg layer.  
+.on will run the animation for the display powering on
+"" - neutral, the strip  the container div of it's class to have the layers default to their assigned settings
+*/
+
+.off > div {
+  animation: power_off 1s ease-out 1;
+  animation-fill-mode: forwards;
+}
+
+@keyframes power_off {
+  0% {
+    opacity: 0.25;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.on > div {
+  animation: glow 2s ease-out 1;
+  animation-fill-mode: forwards;
+}
+
+@keyframes glow {
+  0%,
+  100% {
+    color: #fff, #a79059;
+    opacity: 0, 0.75;
+    text-shadow: 0 0 0px #a79059, 0 0 2vw #a79059;
+  }
+
+  0% {
+    color: #fff;
+    opacity: 0;
+    text-shadow: none;
+  }
+
+  20% {
+    color: #ffa;
+    opacity: 0.9;
+    text-shadow: 0 0 3vw #a79059;
+  }
+
+  50% {
+    color: #a79059;
+    opacity: 0.9;
+    text-shadow: 0 0 2vw #a79059;
+  }
+}
+
+.layer-1 {
+  top: 0;
+  color: #a79059;
+  font-family: "DSEG14ClassicRegular";
+  text-shadow: 0 0 0.25vw #b9d467;
+}
+
+.layer-2 {
+  top: 0;
+  color: #b9d467;
+  opacity: 0.5;
+  mix-blend-mode: overlay;
+  font-family: "DSEG14ClassicLight";
+}
+
+.layer-3 {
+  top: 0;
+  color: #ec8427;
+  opacity: 0.5;
+  mix-blend-mode: hard-light;
+  text-shadow: 0 0 0.75vw #b9d467;
+  font-family: "DSEG14ClassicLight";
+  font-size: 95%;
+}
+
+.layer-4 {
+  top: 5px;
+  left: 5px;
+  color: #ec8427;
+  opacity: 0.8;
+  mix-blend-mode: overlay;
+  font-family: "DSEG14ClassicLight";
+  font-size: 98%;
+}
+
+.ground {
+  position: relative;
+  color: #1d2024;
+  font-family: "DSEG14ClassicLight";
+}
+
+
+
+.input_section {
+  display: flex;
+  margin-left: 0;
+  margin-right: 0;
+  vertical-align: top;
+  
+    
+}
+
+input {
+  float: none;
+  display: flex;
+  height: 3vw;
+  width: 30vw;
+  font-size: 2vw;
+  margin-bottom: 0;
+  background-color: #2d0a09;
+  color: #170505;
+  opacity: 0.5;
+  font-family: "DSEG14ClassicRegular";
+  outline: none;
+  
+  
+}
+
+input[type="text"]:focus {
+  background-color: #521716;
+  color: #8a1312;
+  opacity: 0.8;
+}
+
+button {
+  float: none;
+  display: flex;
+  height: 3vw;
+  width: 30.5vw;
+  margin-top: 0.5vw;  
+  background-color: #7b0100;
+  color: #440403;
+  font-size: 2vw;
+  outline: none;
+  
+}
