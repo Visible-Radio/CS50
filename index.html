@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - 14 segment display print out text</title>
+  <link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<!doctype html>
+<html>
+
+<head>
+  <link rel="stylesheet" href="retromultiple.css">
+  <link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/dseg14" type="text/css" />
+</head>
+
+<body>
+
+
+  <div>
+
+    <table class="display_container">
+      <tr class="display_container">
+        <td class="display_container">
+
+          <table class="display module">
+            <tr>
+              <td>
+                <div class="ground">
+                  <span>~</span>
+                  <div id="0" class="off">
+                    <div class="layer layer-1">
+                      R
+                    </div>
+                    <div class="layer layer-2">
+                      R
+                    </div>
+                    <div class="layer layer-3">
+                      R
+                    </div>
+                    <div class="layer layer-4">
+                      R
+                    </div>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </table>
+
+          <table class="display module">
+            <tr>
+              <td>
+                <div class="ground">
+                  <span>~</span>
+                  <div id="1" class="off">
+                    <div class="layer layer-1">
+                      R
+                    </div>
+                    <div class="layer layer-2">
+                      R
+                    </div>
+                    <div class="layer layer-3">
+                      R
+                    </div>
+                    <div class="layer layer-4">
+                      R
+                    </div>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </table>
+
+          <table class="display module">
+            <tr>
+              <td>
+                <div class="ground">
+                  <span>~</span>
+                  <div id="2" class="off">
+                    <div class="layer layer-1">
+                      R
+                    </div>
+                    <div class="layer layer-2">
+                      R
+                    </div>
+                    <div class="layer layer-3">
+                      R
+                    </div>
+                    <div class="layer layer-4">
+                      R
+                    </div>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </table>
+
+          <table class="display module">
+            <tr>
+              <td>
+                <div class="ground">
+                  <span>~</span>
+                  <div id="3" class="off">
+                    <div class="layer layer-1">
+                      R
+                    </div>
+                    <div class="layer layer-2">
+                      R
+                    </div>
+                    <div class="layer layer-3">
+                      R
+                    </div>
+                    <div class="layer layer-4">
+                      R
+                    </div>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </table>
+
+          <table class="display module">
+            <tr>
+              <td>
+                <div class="ground">
+                  <span>~</span>
+                  <div id="4" class="off">
+                    <div class="layer layer-1">
+                      R
+                    </div>
+                    <div class="layer layer-2">
+                      R
+                    </div>
+                    <div class="layer layer-3">
+                      R
+                    </div>
+                    <div class="layer layer-4">
+                      R
+                    </div>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </table>
+
+          <table class="display module">
+            <tr>
+              <td>
+                <div class="ground">
+                  <span>~</span>
+                  <div id="5" class="off">
+                    <div class="layer layer-1">
+                      <span>R</span>
+                    </div>
+                    <div class="layer layer-2">
+                      R
+                    </div>
+                    <div class="layer layer-3">
+                      R
+                    </div>
+                    <div class="layer layer-4">
+                      R
+                    </div>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </table>
+
+          <table class="display module">
+            <tr>
+              <td>
+                <div class="ground">
+                  <span>~</span>
+                  <div id="6" class="off">
+                    <div class="layer layer-1">
+                      R
+                    </div>
+                    <div class="layer layer-2">
+                      R
+                    </div>
+                    <div class="layer layer-3">
+                      R
+                    </div>
+                    <div class="layer layer-4">
+                      R
+                    </div>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </table>
+
+          <table class="display module">
+            <tr>
+              <td>
+                <div class="ground">
+                  <span>~</span>
+                  <div id="7" class="off">
+                    <div class="layer layer-1">
+                      R
+                    </div>
+                    <div class="layer layer-2">
+                      R
+                    </div>
+                    <div class="layer layer-3">
+                      R
+                    </div>
+                    <div class="layer layer-4">
+                      R
+                    </div>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </table>
+
+        </td>
+      </tr>
+    </table>
+
+    <div class="input_section">
+    <form>
+      <table style="margin-left: 1vw;"><tr><td>
+      <input class="input_section" type="text" id="input_text">
+      <button class="input_section" type="button" onclick="clear_tron(); write_to_tron(document.querySelector('#input_text').value);">  INPUT</button>
+      </td></tr>
+
+      </table>
+    </div>
+    </form>
+
+    <table class="display_container">
+      <tr class="display_container">
+        <td class="display_container">
+
+          <table class="display module">
+            <tr>
+              <td>
+                <div class="ground">
+                  <span>~</span>
+                  <div id="8" class="on">
+                    <div class="layer layer-1">
+                      R
+                    </div>
+                    <div class="layer layer-2">
+                      R
+                    </div>
+                    <div class="layer layer-3">
+                      R
+                    </div>
+                    <div class="layer layer-4">
+                      R
+                    </div>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </table>
+
+          <table class="display module">
+            <tr>
+              <td>
+                <div class="ground">
+                  <span>~</span>
+                  <div id="9" class="on">
+                    <div class="layer layer-1">
+                      R
+                    </div>
+                    <div class="layer layer-2">
+                      R
+                    </div>
+                    <div class="layer layer-3">
+                      R
+                    </div>
+                    <div class="layer layer-4">
+                      R
+                    </div>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </table>
+
+          <table class="display module">
+            <tr>
+              <td>
+                <div class="ground">
+                  <span>~</span>
+                  <div id="10" class="on">
+                    <div class="layer layer-1">
+                      R
+                    </div>
+                    <div class="layer layer-2">
+                      R
+                    </div>
+                    <div class="layer layer-3">
+                      R
+                    </div>
+                    <div class="layer layer-4">
+                      R
+                    </div>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </table>
+
+          <table class="display module">
+            <tr>
+              <td>
+                <div class="ground">
+                  <span>~</span>
+                  <div id="11" class="on">
+                    <div class="layer layer-1">
+                      R
+                    </div>
+                    <div class="layer layer-2">
+                      R
+                    </div>
+                    <div class="layer layer-3">
+                      R
+                    </div>
+                    <div class="layer layer-4">
+                      R
+                    </div>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </table>
+
+          <table class="display module">
+            <tr>
+              <td>
+                <div class="ground">
+                  <span>~</span>
+                  <div id="12" class="on">
+                    <div class="layer layer-1">
+                      R
+                    </div>
+                    <div class="layer layer-2">
+                      R
+                    </div>
+                    <div class="layer layer-3">
+                      R
+                    </div>
+                    <div class="layer layer-4">
+                      R
+                    </div>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </table>
+
+          <table class="display module">
+            <tr>
+              <td>
+                <div class="ground">
+                  <span>~</span>
+                  <div id="13" class="on">
+                    <div class="layer layer-1">
+                      R
+                    </div>
+                    <div class="layer layer-2">
+                      R
+                    </div>
+                    <div class="layer layer-3">
+                      R
+                    </div>
+                    <div class="layer layer-4">
+                      R
+                    </div>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </table>
+
+          <table class="display module">
+            <tr>
+              <td>
+                <div class="ground">
+                  <span>~</span>
+                  <div id="14" class="on">
+                    <div class="layer layer-1">
+                      R
+                    </div>
+                    <div class="layer layer-2">
+                      R
+                    </div>
+                    <div class="layer layer-3">
+                      R
+                    </div>
+                    <div class="layer layer-4">
+                      R
+                    </div>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </table>
+
+          <table class="display module">
+            <tr>
+              <td>
+                <div class="ground">
+                  <span>~</span>
+                  <div id="15" class="on">
+                    <div class="layer layer-1">
+                      R
+                    </div>
+                    <div class="layer layer-2">
+                      R
+                    </div>
+                    <div class="layer layer-3">
+                      R
+                    </div>
+                    <div class="layer layer-4">
+                      R
+                    </div>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </table>
+
+        </td>
+      </tr>
+    </table>
+
+    <br>
+
+    <table class="display_container">
+      <tr class="display_container">
+        <td class="display_container">
+
+          <table class="display module">
+            <tr>
+              <td>
+                <div class="ground">
+                  <span>~</span>
+                  <div id="16" class="on">
+                    <div class="layer layer-1">
+                      R
+                    </div>
+                    <div class="layer layer-2">
+                      R
+                    </div>
+                    <div class="layer layer-3">
+                      R
+                    </div>
+                    <div class="layer layer-4">
+                      R
+                    </div>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </table>
+
+          <table class="display module">
+            <tr>
+              <td>
+                <div class="ground">
+                  <span>~</span>
+                  <div id="17" class="on">
+                    <div class="layer layer-1">
+                      R
+                    </div>
+                    <div class="layer layer-2">
+                      R
+                    </div>
+                    <div class="layer layer-3">
+                      R
+                    </div>
+                    <div class="layer layer-4">
+                      R
+                    </div>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </table>
+
+          <table class="display module">
+            <tr>
+              <td>
+                <div class="ground">
+                  <span>~</span>
+                  <div id="18" class="on">
+                    <div class="layer layer-1">
+                      R
+                    </div>
+                    <div class="layer layer-2">
+                      R
+                    </div>
+                    <div class="layer layer-3">
+                      R
+                    </div>
+                    <div class="layer layer-4">
+                      R
+                    </div>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </table>
+
+          <table class="display module">
+            <tr>
+              <td>
+                <div class="ground">
+                  <span>~</span>
+                  <div id="19" class="on">
+                    <div class="layer layer-1">
+                      R
+                    </div>
+                    <div class="layer layer-2">
+                      R
+                    </div>
+                    <div class="layer layer-3">
+                      R
+                    </div>
+                    <div class="layer layer-4">
+                      R
+                    </div>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </table>
+
+          <table class="display module">
+            <tr>
+              <td>
+                <div class="ground">
+                  <span>~</span>
+                  <div id="20" class="on">
+                    <div class="layer layer-1">
+                      R
+                    </div>
+                    <div class="layer layer-2">
+                      R
+                    </div>
+                    <div class="layer layer-3">
+                      R
+                    </div>
+                    <div class="layer layer-4">
+                      R
+                    </div>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </table>
+
+          <table class="display module">
+            <tr>
+              <td>
+                <div class="ground">
+                  <span>~</span>
+                  <div id="21" class="on">
+                    <div class="layer layer-1">
+                      R
+                    </div>
+                    <div class="layer layer-2">
+                      R
+                    </div>
+                    <div class="layer layer-3">
+                      R
+                    </div>
+                    <div class="layer layer-4">
+                      R
+                    </div>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </table>
+
+          <table class="display module">
+            <tr>
+              <td>
+                <div class="ground">
+                  <span>~</span>
+                  <div id="22" class="on">
+                    <div class="layer layer-1">
+                      R
+                    </div>
+                    <div class="layer layer-2">
+                      R
+                    </div>
+                    <div class="layer layer-3">
+                      R
+                    </div>
+                    <div class="layer layer-4">
+                      R
+                    </div>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </table>
+
+          <table class="display module">
+            <tr>
+              <td>
+                <div class="ground">
+                  <span>~</span>
+                  <div id="23" class="on">
+                    <div class="layer layer-1">
+                      R
+                    </div>
+                    <div class="layer layer-2">
+                      R
+                    </div>
+                    <div class="layer layer-3">
+                      R
+                    </div>
+                    <div class="layer layer-4">
+                      R
+                    </div>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </table>
+
+        </td>
+      </tr>
+    </table>
+
+
+
+    <table class="display_container">
+      <tr class="display_container">
+        <td class="display_container">
+
+          <table class="display module">
+            <tr>
+              <td>
+                <div class="ground">
+                  <span>~</span>
+                  <div id="24" class="on">
+                    <div class="layer layer-1">
+                      R
+                    </div>
+                    <div class="layer layer-2">
+                      R
+                    </div>
+                    <div class="layer layer-3">
+                      R
+                    </div>
+                    <div class="layer layer-4">
+                      R
+                    </div>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </table>
+
+          <table class="display module">
+            <tr>
+              <td>
+                <div class="ground">
+                  <span>~</span>
+                  <div id="25" class="on">
+                    <div class="layer layer-1">
+                      R
+                    </div>
+                    <div class="layer layer-2">
+                      R
+                    </div>
+                    <div class="layer layer-3">
+                      R
+                    </div>
+                    <div class="layer layer-4">
+                      R
+                    </div>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </table>
+
+          <table class="display module">
+            <tr>
+              <td>
+                <div class="ground">
+                  <span>~</span>
+                  <div id="26" class="on">
+                    <div class="layer layer-1">
+                      R
+                    </div>
+                    <div class="layer layer-2">
+                      R
+                    </div>
+                    <div class="layer layer-3">
+                      R
+                    </div>
+                    <div class="layer layer-4">
+                      R
+                    </div>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </table>
+
+          <table class="display module">
+            <tr>
+              <td>
+                <div class="ground">
+                  <span>~</span>
+                  <div id="27" class="on">
+                    <div class="layer layer-1">
+                      R
+                    </div>
+                    <div class="layer layer-2">
+                      R
+                    </div>
+                    <div class="layer layer-3">
+                      R
+                    </div>
+                    <div class="layer layer-4">
+                      R
+                    </div>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </table>
+
+          <table class="display module">
+            <tr>
+              <td>
+                <div class="ground">
+                  <span>~</span>
+                  <div id="28" class="on">
+                    <div class="layer layer-1">
+                      R
+                    </div>
+                    <div class="layer layer-2">
+                      R
+                    </div>
+                    <div class="layer layer-3">
+                      R
+                    </div>
+                    <div class="layer layer-4">
+                      R
+                    </div>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </table>
+
+          <table class="display module">
+            <tr>
+              <td>
+                <div class="ground">
+                  <span>~</span>
+                  <div id="29" class="on">
+                    <div class="layer layer-1">
+                      R
+                    </div>
+                    <div class="layer layer-2">
+                      R
+                    </div>
+                    <div class="layer layer-3">
+                      R
+                    </div>
+                    <div class="layer layer-4">
+                      R
+                    </div>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </table>
+
+          <table class="display module">
+            <tr>
+              <td>
+                <div class="ground">
+                  <span>~</span>
+                  <div id="30" class="on">
+                    <div class="layer layer-1">
+                      R
+                    </div>
+                    <div class="layer layer-2">
+                      R
+                    </div>
+                    <div class="layer layer-3">
+                      R
+                    </div>
+                    <div class="layer layer-4">
+                      R
+                    </div>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </table>
+
+          <table class="display module">
+            <tr>
+              <td>
+                <div class="ground">
+                  <span>~</span>
+                  <div id="31" class="on">
+                    <div class="layer layer-1">
+                      R
+                    </div>
+                    <div class="layer layer-2">
+                      R
+                    </div>
+                    <div class="layer layer-3">
+                      R
+                    </div>
+                    <div class="layer layer-4">
+                      R
+                    </div>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </table>
+
+        </td>
+      </tr>
+    </table>
+
+  </div>
+
+<div style="display:inline-block;">
+  <table style="display:inline-block; padding:1vw; text-shadow: 0 0 2vw #a79059;">
+    <tr>
+      <td style="border:0; color:#a79059; text-align:left; font-size:1vw;"> The specification was boring so I made this instead.<br>
+      CSS animations adapted from: https://codepen.io/aniketx27/pen/mvyGEN
+      <br>
+      layout ain't easy
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+
+</body>
+
+</html>
+<!-- partial -->
+  <script  src="./script.js"></script>
+
+</body>
+</html>
